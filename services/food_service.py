@@ -1,16 +1,16 @@
 from fastapi import APIRouter, status, HTTPException
 from models.error_model import DatabaseError, FoodNotFoundError
-from models.food_model import Food, FoodIdRequestBody
+from models.food_model import FoodFlex, FoodIdRequestBody
 from repositories.food_repo import query_with_food_id
 from controller import *
 from utils.payload import *
 
 food_router = APIRouter(tags=["foods"])
 
-@food_router.post("/", status_code=status.HTTP_201_CREATED, 
+@food_router.post("/", status_code=status.HTTP_200_OK, 
                          responses={
-                             201: {
-                                 "model": Food
+                             200: {
+                                 "model": FoodFlex,
                              },
                              404: {
                                  "model": FoodNotFoundError,
@@ -21,7 +21,7 @@ food_router = APIRouter(tags=["foods"])
                                 'description': 'Database Connection Error'
                              }
                          })
-async def get_foods_flex(food_id_request_body: FoodIdRequestBody):
+async def get_foods_flexs(food_id_request_body: FoodIdRequestBody):
     
     food_id_list = dict(food_id_request_body)["food_id_list"]
     
@@ -29,7 +29,8 @@ async def get_foods_flex(food_id_request_body: FoodIdRequestBody):
     if 200 in result:
         food_data = result[200]
         foods_flex = gen_foods_flexs(food_data)
-        return botnoi_payload(foods_flex)
+        # return botnoi_payload(foods_flex)
+        return foods_flex
     
     else:
         error_key = list(result.keys())[0]
