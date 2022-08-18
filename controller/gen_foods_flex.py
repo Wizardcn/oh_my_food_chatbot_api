@@ -70,10 +70,11 @@ def gen_foods_carousel(food_data: list):
 
 def gen_foods_flexs(food_data: list):
     data_lenght = len(food_data)
+    print(data_lenght)
     flexs = []
     start = 0
-    while start < data_lenght-1:
-        stop = start + 8 # สร้าง carousel ทีมด้านในมี bubble ไม่เกิด 8 อัน
+    while start < data_lenght:
+        stop = start + 8 # สร้าง carousel ที่ด้านในมี bubble ไม่เกิด 8 อัน
         if stop > data_lenght - 1:
             stop = data_lenght
         flexs.append(gen_foods_carousel(food_data[start:stop]))
