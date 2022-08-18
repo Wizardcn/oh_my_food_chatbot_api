@@ -17,9 +17,4 @@ def text_message(textList):
     for text in textList:
       textPayloads.append({"type": "text","text": text})
 
-    out = {
-      "response_type": "object",
-      "line_payload": textPayloads
-    }
-
-    return out
+    return textPayloads
