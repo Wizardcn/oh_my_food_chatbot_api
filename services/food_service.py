@@ -29,9 +29,9 @@ async def get_foods_flexs(food_id_request_body: FoodIdRequestBody):
     if 200 in result:
         food_data = result[200]
         foods_flex = gen_foods_flexs(food_data)
-        # return botnoi_payload(foods_flex)
-        return foods_flex
-    
+        return botnoi_payload(foods_flex)
+    elif 404 in result:
+        return botnoi_payload(text_message(["ไม่พบสินค้าในระบบนะครับ"]))
     else:
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])
