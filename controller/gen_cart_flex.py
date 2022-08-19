@@ -164,7 +164,7 @@ def gen_cart_flex(cart_data) -> dict:
             "action": {
                 "type": "postback",
                 "label": "ชำระเงิน",
-                "data": "DL_ชำระเงิน"
+                "data": "in_สรุปคำสั่งซื้อ"
             },
             "height": "sm",
             "style": "primary",
