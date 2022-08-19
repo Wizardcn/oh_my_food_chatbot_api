@@ -1,1 +1,1 @@
-from .mongo_atlas import Mongoatlas
+from .mongo_connector import *
