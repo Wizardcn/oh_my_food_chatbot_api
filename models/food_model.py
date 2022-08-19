@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 
+
+class Food(BaseModel):
+    food_id: str
+    food_name: str
+    img_url: str
+    price: int
+
 class FoodFlex(BaseModel):
-    # food_id: str
-    # food_name: str
-    # img_url: str
-    # price: int
-    
     class Config:
         schema_extra = {
             "example": {
