@@ -4,7 +4,7 @@ def food_serializer(food) -> dict:
         "food_id": str(food["food_id"]),
         "food_name": str(food["food_name"]),
         "img_url": str(food["img_url"]),
-        "price": str(food["price"])
+        "price": int(food["price"])
     }
 
 def foods_serializer(foods) -> list:
