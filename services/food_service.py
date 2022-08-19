@@ -12,10 +12,6 @@ food_router = APIRouter(tags=["foods"])
                              200: {
                                  "model": FoodFlex,
                              },
-                             404: {
-                                 "model": FoodNotFoundError,
-                                 "description": "Food Not Found Error"
-                             },
                              520: {
                                 'model': DatabaseError,
                                 'description': 'Database Connection Error'
