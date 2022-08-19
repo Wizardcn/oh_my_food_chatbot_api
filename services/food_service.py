@@ -36,12 +36,3 @@ async def get_foods_flexs(food_id_request_body: FoodIdRequestBody):
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])
     
-
-    
-# from controller import gen_foods_carousel
-# from dbconnector import Mongoatlas
-# from utils.payload import *
-# import json
-# foods_col = Mongoatlas(collection="foods")
-# food_data = foods_col.find({})["documents"][:4]
-# print(json.dumps(gen_foods_carousel(food_data)))
