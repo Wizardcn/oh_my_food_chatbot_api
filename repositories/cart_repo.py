@@ -6,6 +6,20 @@ import pymongo
 dse6g1customer_db = MongoConnector.connect()
 carts_col = dse6g1customer_db["carts"]
 
+
+def create_cart(customer_id: str):
+    try:
+        _id = carts_col.insert_one({
+            "customer_id": customer_id,
+            "cart": []
+        })
+        
+        return {201: carts_serializer(carts_col.find({"_id": _id.inserted_id}))[0]}
+    except pymongo.errors.ConnectionFailure:
+        return {520: "Fail to connect Database"}
+
+
+
 def query_cart(customer_id: str):
     try:
         carts = carts_serializer(carts_col.find({"customer_id": customer_id}))
