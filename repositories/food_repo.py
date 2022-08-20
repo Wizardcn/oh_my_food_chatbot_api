@@ -27,3 +27,13 @@ def query_with_food_name(food_name: str):
             return {200: foods[0]}
     except pymongo.errors.ConnectionFailure:
         return {520: "Fail to connect Database"}
+    
+def query_with_food_category(category: str):
+    try:
+        foods = foods_serializer(foods_col.find({"category": category}))
+        if len(foods) == 0:
+            return {404: "Foods with the category name is not available"}
+        else:
+            return {200: foods}
+    except pymongo.errors.ConnectionFailure:
+        return {520: "Fail to connect Database"}
