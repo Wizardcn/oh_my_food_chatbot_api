@@ -4,15 +4,6 @@ def gen_foods_carousel(food_data: list):
     bubblelist = []
     for food in food_data:
         bubble = {
-            "type": "bubble",
-            "size": "kilo",
-            "hero": {
-                "aspectMode": "cover",
-                "aspectRatio": "20:13",
-                "size": "full",
-                "type": "image",
-                "url": food["img_url"]
-            },
             "body": {
                 "contents": [
                 {
@@ -45,9 +36,9 @@ def gen_foods_carousel(food_data: list):
                 "contents": [
                 {
                     "action": {
-                    "type": "message",
-                    "label": "Add to Cart",
-                    "text": food["food_name"]
+                        "type": "message",
+                        "label": "Add to Cart",
+                        "text": food["food_name"]
                     },
                     "color": "#4fc3f7",
                     "style": "primary",
@@ -57,7 +48,16 @@ def gen_foods_carousel(food_data: list):
                 "layout": "vertical",
                 "spacing": "sm",
                 "type": "box"
-            }
+            },
+            "hero": {
+                "aspectMode": "cover",
+                "aspectRatio": "20:13",
+                "size": "full",
+                "type": "image",
+                "url": food["img_url"]
+            },
+            "size": "kilo",
+            "type": "bubble"
         }
         
         bubblelist.append(bubble)
