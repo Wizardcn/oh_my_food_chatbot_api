@@ -30,4 +30,3 @@ def update_cart(customer_id: str, cart: Cart):
 
     except pymongo.errors.ConnectionFailure:
         return {520: "Fail to connect database"}
-        
