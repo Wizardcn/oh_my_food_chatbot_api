@@ -7,64 +7,64 @@ def gen_foods_carousel(food_data: list):
             "type": "bubble",
             "size": "kilo",
             "hero": {
-                "type": "image",
-                "url": food["img_url"],
-                "size": "full",
+                "aspectMode": "cover",
                 "aspectRatio": "20:13",
-                "aspectMode": "cover"
+                "size": "full",
+                "type": "image",
+                "url": food["img_url"]
             },
             "body": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
                 "contents": [
                 {
-                    "type": "box",
-                    "layout": "baseline",
+                    "size": "xl",
+                    "text": food["food_name"],
+                    "type": "text",
+                    "weight": "bold",
+                    "wrap": True
+                },
+                {
                     "contents": [
                     {
-                        "type": "text",
-                        "text": food["food_name"],
-                        "weight": "bold",
-                        "margin": "md",
                         "flex": 0,
-                        "size": "xl"
-                    },
-                    {
+                        "size": "xl",
+                        "text": f"฿{food['price']}",
                         "type": "text",
-                        "size": "lg",
-                        "align": "end",
-                        "color": "#aaaaaa",
-                        "text": f"฿{food['price']}"
+                        "weight": "bold",
+                        "wrap": True
                     }
-                    ]
+                    ],
+                    "layout": "baseline",
+                    "type": "box"
                 }
-                ]
+                ],
+                "layout": "vertical",
+                "spacing": "sm",
+                "type": "box"
             },
             "footer": {
-                "type": "box",
-                "layout": "vertical",
                 "contents": [
-                    {
-                        "type": "button",
-                        "style": "primary",
-                        "color": "#4fc3f7",
-                        "margin": "sm",
-                        "action": {
-                        "type": "message",
-                        "label": "Add to Cart",
-                        "text": food["food_name"]
-                        }
-                    }
-                ]
+                {
+                    "action": {
+                    "type": "message",
+                    "label": "Add to Cart",
+                    "text": food["food_name"]
+                    },
+                    "color": "#4fc3f7",
+                    "style": "primary",
+                    "type": "button"
+                }
+                ],
+                "layout": "vertical",
+                "spacing": "sm",
+                "type": "box"
             }
         }
         
         bubblelist.append(bubble)
 
     carousel = {
-    "type": "carousel",
-    "contents": bubblelist
+        "type": "carousel",
+        "contents": bubblelist
     }
     return flex_message(carousel)
 
