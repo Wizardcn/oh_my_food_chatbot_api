@@ -36,9 +36,9 @@ def gen_foods_carousel(food_data: list):
                 "contents": [
                 {
                     "action": {
-                        "type": "message",
-                        "label": "Add to Cart",
-                        "text": food["food_name"]
+                    "label": "Add to Cart",
+                    "text": food["food_name"],
+                    "type": "message"
                     },
                     "color": "#4fc3f7",
                     "style": "primary",
