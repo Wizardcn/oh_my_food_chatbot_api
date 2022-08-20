@@ -16,6 +16,16 @@ def add_food_on_customer_cart(customer_id: str, food_name: str, amount: int):
             customer_cart["cart"].append({"food_id": food_id, "amount": amount})
 
             return update_cart(customer_id, customer_cart)
+        elif 404 in cart_result:
+            create_cart_result = create_cart(customer_id)
+            
+            if 201 in create_cart_result:
+                customer_cart = create_cart_result[201]
+                customer_cart["cart"].append({"food_id": food_id, "amount": amount})
+
+                return update_cart(customer_id, customer_cart)
+            else:
+                return create_cart_result
         else:
             return cart_result
     else:
