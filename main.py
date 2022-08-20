@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from services import food_router
 from services import cart_router
+from services import order_router
 
 
 
@@ -35,3 +36,4 @@ def serve_home(request: Request):
 
 app.include_router(food_router, prefix='/service/foods')
 app.include_router(cart_router, prefix="/service/carts")
+app.include_router(order_router, prefix="/service/orders")
