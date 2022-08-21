@@ -26,7 +26,10 @@ async def recommend_foods_with_knowledges(sub_topic: str):
         foods_flex = gen_foods_flexs(food_data)
         return botnoi_payload(foods_flex)
     elif 404 in result:
-        return botnoi_payload(text_message(["หัวข้อนี้เรายังแนะนำไม่ได้นะครับ 🙏😔"]))
+        return {
+                "response_type": "intent",
+                "intent": "recommender_can_not_recommend_this_topic"
+        }
     else:
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])

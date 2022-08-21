@@ -27,7 +27,10 @@ async def get_foods_flexs_by_food_id(food_id_request_body: FoodIdRequestBody):
         foods_flex = gen_foods_flexs(food_data)
         return botnoi_payload(foods_flex)
     elif 404 in result:
-        return botnoi_payload(text_message(["ไม่พบสินค้าในระบบนะครับ"]))
+        return {
+                "response_type": "intent",
+                "intent": "เลือกสินค้า_food_not_found"
+        }
     else:
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])
@@ -51,7 +54,10 @@ async def get_foods_flexs_by_category(category: str):
         foods_flex = gen_foods_flexs(food_data)
         return botnoi_payload(foods_flex)
     elif 404 in result:
-        return botnoi_payload(text_message(["ไม่พบสินค้าในระบบนะครับ"]))
+        return {
+                "response_type": "intent",
+                "intent": "เลือกสินค้า_food_not_found"
+        }
     else:
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])
