@@ -53,6 +53,10 @@ async def get_customer_cart_flex(customer_id: str):
     if 200 in result:
         cart = result[200]
         cart_data = cart["cart"]
+        
+        if len(cart_data) == 0:
+            return botnoi_payload(text_message(["ตอนนี้ลูกค้าไม่มีสินค้าในตะกร้านะครับ", "หากลูกค้าสนใจสั่งสินค้าสามารถกดปุ่มที่เมนูด้านล่างนี้ได้เลยครับ 👇"]))
+        
         cart_flex = gen_cart_flex(cart_data)
         return botnoi_payload(cart_flex)
     elif 404 in result:
