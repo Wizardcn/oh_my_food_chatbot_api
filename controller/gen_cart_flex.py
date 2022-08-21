@@ -179,4 +179,4 @@ def gen_cart_flex(cart_data) -> dict:
         }
     }
     
-    return flex_message(bubble)
+    return [flex_message(bubble)]
