@@ -164,7 +164,7 @@ def gen_cart_flex(cart_data) -> dict:
             "action": {
                 "type": "postback",
                 "label": "Confirm",
-                "data": "in_summarize_order"
+                "data": "cart_confirm_order"
             },
             "height": "sm",
             "style": "primary",
