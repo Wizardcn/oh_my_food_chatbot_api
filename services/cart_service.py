@@ -56,12 +56,18 @@ async def get_customer_cart_flex(customer_id: str):
         
         if len(cart_data) == 0:
             # return botnoi_payload(text_message(["ตอนนี้ลูกค้าไม่มีสินค้าในตะกร้านะครับ", "หากลูกค้าสนใจสั่งสินค้าสามารถกดปุ่มที่เมนูด้านล่างนี้ได้เลยครับ 👇"]))
-            return {"result": "cart_is_empty"}
+            return {
+                "response_type": "intent",
+                "intent": "cart_is_empty"
+            }
         
         cart_flex = gen_cart_flex(cart_data)
         return botnoi_payload(cart_flex)
     elif 404 in result:
-        return {"result": "cart_is_empty"}
+        return {
+                "response_type": "intent",
+                "intent": "cart_is_empty"
+        }
     else:
         error_key = list(result.keys())[0]
         raise HTTPException(status_code=error_key, detail=result[error_key])
